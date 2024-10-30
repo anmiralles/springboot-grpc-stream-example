@@ -24,7 +24,6 @@
         <junit-jupiter.version>5.11.0-M2</junit-jupiter.version>
         <logback.version>1.5.8</logback.version>
         <org.slf4j.version>2.0.16</org.slf4j.version>
-
         <io.grpc.version>1.62.2</io.grpc.version>
         <protoc.version>3.25.1</protoc.version>
         <os-maven-plugin.version>1.7.1</os-maven-plugin.version>
@@ -182,6 +181,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
             </plugin>
         </plugins>
     </build>

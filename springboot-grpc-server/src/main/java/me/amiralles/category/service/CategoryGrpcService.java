@@ -2,7 +2,6 @@ package me.amiralles.category.service;
 
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
-import lombok.var;
 import me.amiralles.category.model.Category;
 import me.amiralles.category.repository.CategoryRepository;
 import me.amiralles.category.stubs.CategoryServiceGrpc;
