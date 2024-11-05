@@ -22,11 +22,11 @@ public class GrpcClientResponseInterceptor implements ClientInterceptor {
 
               @Override
               public void onMessage(RespT message) {
-                log.debug("Received response from Server: {}", message);
+                log.info("Intercepted response from Server: {}", message);
+                log.info("Intercepted headers from Server: {}", headers.toString());
                 super.onMessage(message);
               }
-            },
-            headers);
+            }, headers);
       }
     };
   }

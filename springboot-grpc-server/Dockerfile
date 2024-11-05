@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/openjdk-21:latest
+FROM openjdk:17-alpine
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]

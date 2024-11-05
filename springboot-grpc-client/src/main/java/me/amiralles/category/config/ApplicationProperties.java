@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties("product")
+@ConfigurationProperties("category")
 @Setter
 @Getter
 public class ApplicationProperties {

@@ -2,9 +2,7 @@ package me.amiralles.category.service;
 
 import io.grpc.ManagedChannel;
 import io.grpc.StatusRuntimeException;
-import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
-import me.amiralles.category.model.Category;
 import me.amiralles.category.stubs.CategoryServiceGrpc;
 import me.amiralles.category.stubs.GetCategoryRequest;
 import me.amiralles.category.stubs.GetCategoryResponse;
@@ -23,27 +21,26 @@ public class CategoryService {
     public void getCategoryAsync(String categoryId) throws InterruptedException {
         log.info("Calling Server..");
         try {
-            // Create a new async stub
-            CategoryServiceGrpc.CategoryServiceStub categoryServiceAsyncStub = CategoryServiceGrpc
-                    .newStub(managedChannel);
+            // Create a new sync stub
+            CategoryServiceGrpc.CategoryServiceBlockingStub categoryServiceBlockingStub =
+                    CategoryServiceGrpc.newBlockingStub(managedChannel);
 
             // Define request param
             GetCategoryRequest getCategoryRequest = GetCategoryRequest
                     .newBuilder().setId(categoryId).build();
 
-            // Create async stub
-            categoryServiceAsyncStub.getCategory(getCategoryRequest,
-                    new CategoryCallback());
-
-            Thread.sleep(3000);
-            log.info("Finished call");
+            // Create request and process response
+            GetCategoryResponse category = categoryServiceBlockingStub
+                    .getCategory(getCategoryRequest);
+            //log.info("Received category, {}", category);
         } catch (StatusRuntimeException error) {
             log.error("Error while calling category service, reason {} ",
                     error.getMessage());
         }
+        log.info("Finished call");
     }
 
-    private static class CategoryCallback implements
+    /*private static class CategoryCallback implements
             StreamObserver<GetCategoryResponse> {
 
         @Override
@@ -66,5 +63,5 @@ public class CategoryService {
         public void onCompleted() {
             log.info("Stream completed");
         }
-    }
+    }*/
 }

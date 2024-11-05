@@ -28,5 +28,4 @@ public class CustomWebMvcConfigurationSupport extends WebMvcConfigurationSupport
         resolver.setSizeParameterName("size");
         argumentResolvers.add(resolver);
     }
-
 }
