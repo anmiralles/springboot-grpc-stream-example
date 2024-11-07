@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties("springboot-micro2")
+@ConfigurationProperties("springboot-micro1")
 @Setter
 @Getter
 public class ApplicationProperties {

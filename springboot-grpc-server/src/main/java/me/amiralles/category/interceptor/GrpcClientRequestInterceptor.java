@@ -2,6 +2,7 @@ package me.amiralles.category.interceptor;
 
 import io.grpc.*;
 import lombok.extern.slf4j.Slf4j;
+import me.amiralles.category.config.MetadataInjector;
 
 @Slf4j
 public class GrpcClientRequestInterceptor implements ClientInterceptor {
@@ -16,7 +17,8 @@ public class GrpcClientRequestInterceptor implements ClientInterceptor {
 
       @Override
       public void start(Listener<RespT> responseListener, Metadata headers) {
-        log.info("Intercepted request: {}", responseListener);
+        MetadataInjector injector = new MetadataInjector();
+        headers.put(Metadata.Key.of("HOSTNAME", Metadata.ASCII_STRING_MARSHALLER), injector.getPodName());
         super.start(responseListener, headers);
       }
     };

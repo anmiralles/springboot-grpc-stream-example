@@ -15,12 +15,4 @@
     <name>springboot-grpc-client</name>
     <description>springboot-grpc-client</description>
 
-    <dependencies>
-        <dependency>
-            <groupId>net.devh</groupId>
-            <artifactId>grpc-client-spring-boot-starter</artifactId>
-            <version>3.0.0.RELEASE</version>
-        </dependency>
-    </dependencies>
-
 </project>

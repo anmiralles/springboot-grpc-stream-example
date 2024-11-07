@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "me.amiralles.category.stubs";
+option java_multiple_files = true;
+
+service EntityService {
+  rpc getEntityById (EntityRequest) returns (EntityResponse);
+}
+
+message EntityRequest {
+  string name = 1;
+  string id = 2;
+}
+
+message EntityResponse {
+  string ack = 1;
+}

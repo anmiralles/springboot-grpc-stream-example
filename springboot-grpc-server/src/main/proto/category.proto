@@ -15,9 +15,9 @@ message Category {
 }
 
 message GetCategoryRequest {
-  string id = 1;
+  Category category = 1;
 }
 
 message GetCategoryResponse {
-  Category category = 1;
+  string ack = 1;
 }

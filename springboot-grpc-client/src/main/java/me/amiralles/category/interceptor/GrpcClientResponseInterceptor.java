@@ -11,23 +11,22 @@ public class GrpcClientResponseInterceptor implements ClientInterceptor {
       final CallOptions callOptions,
       final Channel channel) {
 
-    return new ForwardingClientCall.SimpleForwardingClientCall<ReqT, RespT>(
-        channel.newCall(methodDescriptor, callOptions)) {
+    return new ForwardingClientCall.SimpleForwardingClientCall<>(
+            channel.newCall(methodDescriptor, callOptions)) {
 
-      @Override
-      public void start(Listener<RespT> responseListener, Metadata headers) {
-        super.start(
-            new ForwardingClientCallListener.SimpleForwardingClientCallListener<RespT>(
-                responseListener) {
+        @Override
+        public void start(Listener<RespT> responseListener, Metadata headers) {
+            super.start(
+                    new ForwardingClientCallListener.SimpleForwardingClientCallListener<>(
+                            responseListener) {
 
-              @Override
-              public void onMessage(RespT message) {
-                log.info("Intercepted response from Server: {}", message);
-                log.info("Intercepted headers from Server: {}", headers.toString());
-                super.onMessage(message);
-              }
-            }, headers);
-      }
+                        @Override
+                        public void onMessage(RespT message) {
+                            log.info("Intercepted response: {}", message);
+                            super.onMessage(message);
+                        }
+                    }, headers);
+        }
     };
   }
 }
