@@ -18,7 +18,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.5</version>
+        <version>3.4.1</version>
         <relativePath/>
     </parent>
 
@@ -27,7 +27,7 @@
 
         <jakarta.validation-api.version>3.1.0-M1</jakarta.validation-api.version>
         <reactor.version>3.6.0</reactor.version>
-        <spring-boot.version>3.3.5</spring-boot.version>
+        <spring-boot.version>3.4.1</spring-boot.version>
         <junit-jupiter.version>5.11.0-M2</junit-jupiter.version>
         <logback.version>1.5.8</logback.version>
         <org.slf4j.version>2.0.16</org.slf4j.version>
