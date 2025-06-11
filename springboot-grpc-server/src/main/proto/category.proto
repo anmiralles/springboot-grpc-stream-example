@@ -22,11 +22,11 @@ message GetCategoryResponse {
   string ack = 1;
 }
 
-message ErrorDetail {
+/*message ErrorDetail {
   // Error code
   string errorCode = 1;
   //Error message
   string message = 2;
   // Additional metadata associated with the Error
   map<string, string> metadata = 3;
-}
+}*/

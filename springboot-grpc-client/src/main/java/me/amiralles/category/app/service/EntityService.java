@@ -2,6 +2,7 @@ package me.amiralles.category.app.service;
 
 import io.grpc.ManagedChannel;
 import io.grpc.StatusRuntimeException;
+import io.micrometer.observation.annotation.Observed;
 import lombok.extern.slf4j.Slf4j;
 import me.amiralles.category.stubs.EntityRequest;
 import me.amiralles.category.stubs.EntityResponse;
@@ -18,6 +19,9 @@ public class EntityService {
         this.managedChannel = managedChannel;
     }
 
+    @Observed(name = "sendEntityRequest",
+            contextualName = "send-entity-request",
+            lowCardinalityKeyValues = {"txId", "12345"})
     public void sendEntityRequest(String entityName, String entityId) throws InterruptedException {
         try {
             log.info("Sending request for entity {}:{}", entityName, entityId);
